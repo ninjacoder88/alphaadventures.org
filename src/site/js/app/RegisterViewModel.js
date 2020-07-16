@@ -1,5 +1,6 @@
 requirejs(["jquery", "vue"],
     function($, vue){
+
         var data = {
             username: "",
             emailAddress: "",
@@ -15,9 +16,12 @@ requirejs(["jquery", "vue"],
                     method: "POST",
                     url: "/api/register/register.php",
                     data: data,
-                    contentType: "application/json"
+                    dataType: "json"
                 }).done(function(response){
                     console.log(response);
+                    if(response.success === "true"){
+                        //window.location()
+                    }
                 }).fail(function(a, b, c){
                     console.error({a: a, b: b, c:c});
                 });

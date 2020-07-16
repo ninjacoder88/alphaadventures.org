@@ -1,5 +1,9 @@
-<!doctype html>
+<?php
+$loggedIn = true;
+?>
+
 <?php function RenderBody() { ?>
+    <script type="text/javascript" src="js/app/IndexViewModel.js"></script>
     <div class="jumbotron">
         <h1>Welcome to Alpha Adventures</h1>
     </div><!--/jumbotron-->
@@ -16,7 +20,15 @@
                     <p class="card-text">Most likely several groups will form as not everyone rides at the same pace.</p>
                     <p class="card-text">While helmets are encouraged, they are not required. You will need to provide your own bicycle or you can rent one from any number of bike shops throughout the area for a reasonable price</a>
                     <p class="card-text">Additional items to consider: sunscreen, snack bars, spare tubes</p>
-                    <button type="button" class="btn btn-primary">Attend</button>
+
+                    <?php if($loggedIn == true) { ?>
+                        <button type="button" class="btn btn-success">Attending</button>
+                        <button type="button" class="btn btn-warning">Maybe</button>
+                        <button type="button" class="btn btn-primary">Not Attending</button>
+                    <?php } else { ?>
+                        <button type="button" class="btn btn-primary">Login To RSVP</button>
+                    <?php } ?>
+                    
                 </div>
             </div>
         </div>
@@ -57,4 +69,5 @@
     </div><!--/row-->
 <?php } ?>
 
+<!doctype html>
 <?php include("_layout.php"); ?>

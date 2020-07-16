@@ -1,3 +1,7 @@
+<?php
+    $loggedIn = false;
+?>
+
 <!doctype html>
 <?php function RenderBody() { ?>
     <script type="text/javascript" src="js/app/RegisterViewModel.js"></script>
