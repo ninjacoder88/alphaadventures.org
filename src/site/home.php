@@ -22,8 +22,17 @@ else
     exit();
 }
 ?>
+
 <?php function RenderBody() { ?>
-    
+    <script type="text/javascript" src="js/app/HomeViewModel.js"></script>
+    <div class="jumbotron">
+        <h1>Welcome to Alpha Adventures</h1>
+    </div><!--/jumbotron-->
+
+    <h4>Upcoming Adventures</h4>
+
+    <adventure v-for="adventure in adventures" v-bind:key="adventure.AdventureId" v-bind:adventure="adventure"></adventure>
+
 <?php } ?>
 
 <!doctype html>

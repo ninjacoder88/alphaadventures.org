@@ -1,5 +1,4 @@
 <?php
-
 try
 {
     require_once("RegisterRepository.php");    
@@ -29,5 +28,4 @@ catch(Throwable $t)
 {
     echo json_encode(array("success" => "false", "message" => $t));
 }
-
 ?>

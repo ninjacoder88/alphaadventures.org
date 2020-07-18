@@ -1,3 +1,13 @@
+CREATE TABLE UserStatus
+(
+    UserStatusId INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(15) NOT NULL,
+    PRIMARY KEY(UserStatusId)
+);
+INSERT INTO UserStatus (Name) VALUES ('Registered');
+INSERT INTO UserStatus (Name) VALUES ('Active');
+INSERT INTO UserStatus (Name) VALUES ('Resetting');
+
 CREATE TABLE User
 (
     UserId INT NOT NULL AUTO_INCREMENT,
@@ -6,38 +16,44 @@ CREATE TABLE User
     PhoneNumber VARCHAR(10) NULL,
     Password VARCHAR(100) NOT NULL,
     Salt VARCHAR(10) NOT NULL,
-    PRIMARY KEY(UserId)
+    UserStatusId INT NOT NULL,
+    UserKey VARCHAR(25) NULL,
+    PRIMARY KEY(UserId),
+    FOREIGN KEY(UserStatusId) REFERENCES UserStatus(UserStatusId)
 );
 
 CREATE TABLE Adventure
 (
     AdventureId INT NOT NULL AUTO_INCREMENT,
     Title VARCHAR(50) NOT NULL,
-    StartTime TIME NOT NULL,
+    StartDateTime DATETIME NOT NULL,
+    EndDateTime DATETIME NULL,
     Description VARCHAR(1500) NOT NULL,
     PRIMARY KEY(AdventureId)
 );
 
-CREATE TABLE ResponseType
+CREATE TABLE RsvpType
 (
-    ResponseTypeId INT NOT NULL AUTO_INCREMENT,
+    RsvpTypeId INT NOT NULL AUTO_INCREMENT,
     Name VARCHAR(10),
-    PRIMARY KEY(ResponseTypeId)
+    PRIMARY KEY(RsvpTypeId)
 );
-INSERT INTO ResponseType (Name) VALUES ('Attending');
-INSERT INTO ResponseType (Name) VALUES ('Not Attending');
-INSERT INTO ResponseType (Name) VALUES ('Maybe');
+INSERT INTO RsvpType (Name) VALUES ('Attending');
+INSERT INTO RsvpType (Name) VALUES ('Not Attending');
+INSERT INTO RsvpType (Name) VALUES ('Maybe');
 
-CREATE TABLE Response
+CREATE TABLE Rsvp
 (
-    ResponseId INT NOT NULL AUTO_INCREMENT,
+    RsvpId INT NOT NULL AUTO_INCREMENT,
     UserId INT NOT NULL,
     AdventureId INT NOT NULL,
-    ResponseTypeId INT NOT NULL,
+    RsvpTypeId INT NOT NULL,
     NotifyBySMS BIT NOT NULL,
     NotifyByEmail BIT NOT NULL,
-    PRIMARY KEY(ResponseId),
+    Notes VARCHAR(255) NULL,
+    Attendees INT NOT NULL,
+    PRIMARY KEY(RsvpId),
     FOREIGN KEY(UserId) REFERENCES User(UserId),
     FOREIGN KEY(AdventureId) REFERENCES Adventure(AdventureId),
-    FOREIGN KEY(ResponseTypeId) REFERENCES ResponseType(ResponseTypeId)
+    FOREIGN KEY(RsvpTypeId) REFERENCES RsvpType(RsvpTypeId)
 );

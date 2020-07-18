@@ -1,9 +1,11 @@
 require.config({
-    baseUrl: "js/lib",
+    baseUrl: "js",
     paths: {
-        "jquery": "jquery-3.5.1.min",
-        "knockout": "knockout-3.5.0.min",
-        "vue": "vue-2.6.11.min",
-        "bootstrap": "bootstrap.bundle-4.5.0.min"
+        "jquery": "lib/jquery-3.5.1.min",
+        "knockout": "lib/knockout-3.5.0.min",
+        "vue": "lib/vue-2.6.11.min",
+        "bootstrap": "lib/bootstrap.bundle-4.5.0.min",
+        "text": "lib/text",
+        "http": "services/http"
     }
 });

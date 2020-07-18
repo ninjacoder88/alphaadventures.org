@@ -1,12 +1,14 @@
 requirejs(["jquery", "vue", "bootstrap"],
     function($, vue){
+        "use strict";
+
         var data = {
 
         };
 
         var methods = {
             login: function(){
-                alert("login");
+                window.location = "home.php";
             }
         };
 

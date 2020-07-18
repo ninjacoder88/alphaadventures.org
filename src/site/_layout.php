@@ -20,7 +20,14 @@
                     </li>
                     <?php if($loggedIn) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="suggest.php">Suggest</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"><?php echo "Username"; ?></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
                     </li>
                     <?php } else  { ?>
                     <li class="nav-item">
@@ -38,7 +45,9 @@
                                     <label for="exampleDropdownFormPassword1">Password</label>
                                     <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
                                 </div>
-                                <button type="button" class="btn btn-primary" v-on:click="login">Sign in</button>
+                                <button type="button" class="btn btn-primary" v-on:click="login">Login</button>
+                                <br/>
+                                <a type="button" class="btn btn-outline-info btn-sm" href="forgot.php">Forgot User/Password</a>
                             </form>
                         </div>
                     </li>

@@ -22,8 +22,16 @@ else
     exit();
 }
 ?>
+
 <?php function RenderBody() { ?>
-    
+
+    <div class="container mt-5">
+        <div class="form-group">
+            <textarea rows="10" class="form-control" placeholder="Provide any feedback from past adventures or suggest an adventure and provide details for a future adventure"></textarea>
+            <button type="button" class="btn btn-primary mt-3">Submit</button>
+        </div>
+    </div>
+
 <?php } ?>
 
 <!doctype html>
