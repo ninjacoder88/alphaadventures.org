@@ -1,9 +1,10 @@
-requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
-    function($, vue, http, adventureTemplate){
+requirejs(["vue", "http", "text!app/views/adventure.html"],
+    function(vue, http, adventureTemplate){
         "use strict";
 
         var data =  {
-            adventures: []
+            adventures: [],
+            message: ""
         };
 
         var methods = {
@@ -47,7 +48,7 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
 
                         this.adventures = adventures;
                     }).catch(error => {
-                        window.alert(error);
+                        this.message = error;
                     });
             }
         };
@@ -55,6 +56,7 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
         vue.component("adventure", {
             props: ["adventure"],
             data: function(){
+                message: ""
             },
             methods: {
                 respond: function(rsvpTypeId){
@@ -64,14 +66,14 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
                                 this.adventure.rsvpId = rsvpId;
                                 this.adventure.rsvpTypeId = rsvpTypeId;
                             }).catch(error => {
-                                window.alert(error);
+                                this.message = error;
                             });
                     } else {
                         http.updateRsvp({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes, rsvpId: this.adventure.rsvpId, notifySms: this.adventure.notifySms, notifyEmail: this.adventure.notifyEmail})
                             .then(() => {
                                 this.adventure.rsvpTypeId = rsvpTypeId;
                             }).catch(error => {
-                                window.alert(error);
+                                this.message = error;
                             });
                     }
                 }

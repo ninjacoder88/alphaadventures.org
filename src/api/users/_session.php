@@ -11,6 +11,6 @@ try
 }
 catch(Throwable $t)
 {
-    echo json_encode(array("success"=>"false", "ex" => $t->getMessage()));
+    echo json_encode(array("success"=>"false"));
 }
 ?>

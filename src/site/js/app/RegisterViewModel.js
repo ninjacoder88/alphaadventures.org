@@ -1,5 +1,5 @@
-requirejs(["jquery", "vue", "http"],
-    function($, vue, http){
+requirejs(["vue", "http"],
+    function(vue, http){
         "use strict";
 
         var data = {

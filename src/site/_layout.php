@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-4.5.0.min.css"/>
         <script type="text/javascript" src="js/lib/require-2.3.6.js"></script>
         <script type="text/javascript" src="js/requireConfig.js"></script>
-        <script type="text/javascript" src="js/app/NavigationViewModel.js"></script>
+        <script type="text/javascript" src="js/app/NavigationViewModel.js?v=0.1"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav-bar">

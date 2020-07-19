@@ -11,4 +11,4 @@
 - [x] Add update events functionality to admin page
 - [ ] Add event notification to admin page
 - [ ] Show other users rsvps
-- [ ] Setup table for contact form
+- [x] Setup table for contact form

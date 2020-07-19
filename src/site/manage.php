@@ -30,9 +30,14 @@ else
 }
 ?>
 <?php function RenderBody() { ?>
-    <script type="text/javascript" src="js/app/ManageViewModel.js"></script>
+    <script type="text/javascript" src="js/app/ManageViewModel.js?v=0.1"></script>
 
     <h3>Adventures</h3>
+
+    <div v-if="message !== ''">
+        <div class="alert alert-info" role="alert">{{message}}</div>
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <button type="button" v-on:click="loadAdventures" class="btn btn-primary btn-sm btn-block">Load</button>

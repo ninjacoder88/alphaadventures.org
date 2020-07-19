@@ -6,6 +6,10 @@
                 <h5 class="card-title">{{adventure.StartDateTime}} - {{adventure.EndDateTime}}</h5>
                 <p class="card-text" v-html="adventure.Description"></p>
 
+                <div v-if="message !== ''">
+                    <div class="alert alert-info" role="alert">{{message}}</div>
+                </div>
+
                 <div class="btn-group">
                     <button class="btn dropdown-toggle" style="width: 250px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-bind:class="{'btn-info': adventure.rsvpTypeId === 1, 'btn-outline-info': adventure.rsvpTypeId !== 1}">
                         Attending

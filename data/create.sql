@@ -57,3 +57,12 @@ CREATE TABLE Rsvp
     FOREIGN KEY(AdventureId) REFERENCES Adventure(AdventureId),
     FOREIGN KEY(RsvpTypeId) REFERENCES RsvpType(RsvpTypeId)
 );
+
+CREATE TABLE Feedback
+(
+    FeedbackId INT NOT NULL AUTO_INCREMENT,
+    UserId INT NOT NULL,
+    Message VARCHAR(500),
+    PRIMARY KEY(FeedbackId),
+    FOREIGN KEY(UserId) REFERENCES User(UserId)
+);

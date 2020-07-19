@@ -1,10 +1,11 @@
-requirejs(["jquery", "vue", "http", "text!app/views/editadventure.html"],
-    function($, vue, http, editTemplate){
+requirejs(["vue", "http", "text!app/views/editadventure.html"],
+    function(vue, http, editTemplate){
         "use strict";
 
         var data = {
             adventures: [],
-            adventure: {AdventureId:0}
+            adventure: {AdventureId:0},
+            message: ""
         };
 
         var methods = {
@@ -14,7 +15,7 @@ requirejs(["jquery", "vue", "http", "text!app/views/editadventure.html"],
                         this.adventures = adventures;
                         this.adventure = adventures[0];
                     }).catch(error => {
-
+                        this.message = error;
                     });
             },
             select: function(index){

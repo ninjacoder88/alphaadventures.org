@@ -21,7 +21,7 @@ if($loggedIn)
 
 <!doctype html>
 <?php function RenderBody() { ?>
-    <script type="text/javascript" src="js/app/RegisterViewModel.js"></script>
+    <script type="text/javascript" src="js/app/RegisterViewModel.js?v=0.1"></script>
 
     <div class="container mt-5">
         <div v-if="error !== ''">

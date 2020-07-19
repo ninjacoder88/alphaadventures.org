@@ -1,5 +1,5 @@
 define(["jquery"],
-    function(){
+    function($){
         "use strict";
 
         return {
@@ -128,6 +128,25 @@ define(["jquery"],
                         }
                     }).fail(function(){
                         reject("login failed");
+                    });
+                });
+            },
+
+            sendFeedback: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/contact/_create.php",
+                        dataType: "json",
+                        data: data
+                    }).then(function(response){
+                        if(response.success === "true"){
+                            resolve();
+                        } else {
+                            reject();
+                        }
+                    }).fail(function(){
+                        reject();
                     });
                 });
             },

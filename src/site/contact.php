@@ -24,11 +24,16 @@ else
 ?>
 
 <?php function RenderBody() { ?>
+    <script type="text/javascript" src="js/app/ContactViewModel.js?v=0.1"></script>
 
+    <div v-if="message !== ''">
+        <div class="alert alert-info" role="alert">{{message}}</div>
+    </div>
+    
     <div class="container mt-5">
         <div class="form-group">
-            <textarea rows="10" class="form-control" placeholder="Provide any feedback from past adventures or suggest an adventure and provide details for a future adventure"></textarea>
-            <button type="button" class="btn btn-primary mt-3">Submit</button>
+            <textarea rows="10" class="form-control" v-model="feedback" placeholder="Provide any feedback from past adventures or suggest an adventure and provide details for a future adventure"></textarea>
+            <button type="button" class="btn btn-primary mt-3" v-on:click="sendFeedback">Submit</button>
         </div>
     </div>
 

@@ -20,14 +20,16 @@ if($loggedIn)
 ?>
 
 <?php function RenderBody() { ?>
-    <script type="text/javascript" src="js/app/IndexViewModel.js"></script>
+    <script type="text/javascript" src="js/app/IndexViewModel.js?v=0.1"></script>
 
     <div class="jumbotron">
         <h1>Welcome to Alpha Adventures</h1>
     </div><!--/jumbotron-->
 
     <div class="container">
-        <div class="alert" role="alert">{{message}}</div>
+        <div v-if="message !== ''">
+            <div class="alert alert-info" role="alert">{{message}}</div>
+        </div>
 
         <h3>Upcoming Adventures</h4>
         

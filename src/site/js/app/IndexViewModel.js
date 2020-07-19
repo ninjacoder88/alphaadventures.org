@@ -1,5 +1,5 @@
-requirejs(["jquery", "vue", "http"],
-    function($, vue, http){
+requirejs(["vue", "http"],
+    function(vue, http){
         "use strict";
 
         var data = {
@@ -17,7 +17,7 @@ requirejs(["jquery", "vue", "http"],
                         this.adventures = adventures;
                         this.message = session.message;
                     }).catch(error => {
-                        
+                        this.message = error;
                     });
             }
         };
