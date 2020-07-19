@@ -1,7 +1,7 @@
 # To Do
-- [ ] Send email on register
-- [ ] Create response script for email links
-- [ ] Generate User Key on registration
+- [x] Send email on register
+- [x] Create response script for email links
+- [x] Generate User Key on registration
 - [ ] Setup forgot user/pass page
 - [ ] Send email to reset user/pass
 - [ ] Hide alerts on registration when not in use
