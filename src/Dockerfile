@@ -6,4 +6,5 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 COPY site/ /var/www/html/site
 COPY api/ /var/www/html/api
+COPY cdn/ /var/www/html/cdn
 COPY index.php /var/www/html/

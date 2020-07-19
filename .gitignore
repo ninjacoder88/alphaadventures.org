@@ -1,3 +1,4 @@
 connection.config
 error_log
 .well-known
+cdn

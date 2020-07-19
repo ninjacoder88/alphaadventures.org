@@ -22,9 +22,15 @@ if($loggedIn)
 <?php function RenderBody() { ?>
     <script type="text/javascript" src="js/app/IndexViewModel.js?v=0.1"></script>
 
-    <div class="jumbotron">
+    <!-- <div class="jumbotron">
         <h1>Welcome to Alpha Adventures</h1>
-    </div><!--/jumbotron-->
+    </div> -->
+    <!--/jumbotron-->
+
+    <img src="https://ninjasoftwareconsulting.blob.core.windows.net/alpha/hike.jpg" width="100%" />
+
+    <br/>
+    <br/>
 
     <div class="container">
         <div v-if="message !== ''">
@@ -32,6 +38,7 @@ if($loggedIn)
         </div>
 
         <h3>Upcoming Adventures</h4>
+        <br/>
         
         <ul class="list-group">
             <li class="list-group-item" v-for="adventure in adventures"><strong>{{adventure.Title}}</strong> - {{adventure.StartDateTime}}</li>

@@ -3,6 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="css/lib/bootstrap-4.5.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../cdn/font-awesome-4.7.0/css/font-awesome.min.css" crossorigin="anonymous"/>
         <script type="text/javascript" src="js/lib/require-2.3.6.js"></script>
         <script type="text/javascript" src="js/requireConfig.js"></script>
         <script type="text/javascript" src="js/app/NavigationViewModel.js?v=0.1"></script>
@@ -50,7 +51,7 @@
                                 </div>
                                 <button type="button" class="btn btn-primary" v-on:click="login">Login</button>
                                 <br/>
-                                <a type="button" class="btn btn-outline-info btn-sm" href="forgot.php">Forgot User/Password</a>
+                                <a type="button" class="btn btn-outline-info btn-sm" href="reset.php">Forgot User/Password</a>
                             </form>
                         </div>
                     </li>

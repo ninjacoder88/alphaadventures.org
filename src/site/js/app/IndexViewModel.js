@@ -9,6 +9,7 @@ requirejs(["vue", "http"],
 
         var methods = {
             initialize: function(){
+                this.message = "";
                 window.Promise.all([http.loadAdventuresPreview(), http.loadSession()])
                     .then(resolvedPromises => {
                         var adventures = resolvedPromises[0];

@@ -33,7 +33,7 @@ if($loggedIn)
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="username">Name</label>
+                    <label for="username">Username <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="The name others will know you by"></i></label>
                     <input type="text" class="form-control" id="username" placeholder="Shawn Gene Allen" v-model="username"/>
                 </div>
                 <div class="form-group">
@@ -41,7 +41,7 @@ if($loggedIn)
                     <input type="text" class="form-control" id="emailAddress" placeholder="sga@idtdna.com" v-model="emailAddress"/>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone <small>Used for event updates</small></label>
+                    <label for="phone">Phone <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="This will be used to send SMS update for adventures"></i></label>
                     <input type="text" class="form-control" id="phone" placeholder="319-555-1234" v-model="phoneNumber"/>
                 </div>
                 <div class="form-group">

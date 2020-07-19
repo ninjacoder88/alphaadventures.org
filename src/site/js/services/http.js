@@ -132,6 +132,25 @@ define(["jquery"],
                 });
             },
 
+            resetAccount: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/users/_reset.php",
+                        dataType: "json",
+                        data: data
+                    }).then(function(response){
+                        if(response.success === "true"){
+                            resolve();
+                        } else {
+                            reject(response.message);
+                        }
+                    }).fail(function(){
+                        reject("failed to initiate the reset process");
+                    });
+                });
+            },
+
             sendFeedback: function(data){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({

@@ -60,6 +60,8 @@ requirejs(["vue", "http", "text!app/views/adventure.html"],
             },
             methods: {
                 respond: function(rsvpTypeId){
+                    this.message = "";
+
                     if(this.adventure.rsvpId === null || this.adventure.rsvpId === undefined){
                         http.createRsvp({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes, notifySms: this.adventure.notifySms, notifyEmail: this.adventure.notifyEmail})
                             .then((rsvpId) => {

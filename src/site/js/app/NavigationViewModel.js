@@ -10,6 +10,7 @@ requirejs(["vue", "http", "bootstrap"],
 
         var methods = {
             login: function(){
+                this.loginerror = "";
                 var data = {username: this.loginusername, password: this.loginpassword};
 
                 http.login(data)
