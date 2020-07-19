@@ -14,7 +14,7 @@ CREATE TABLE User
     Username VARCHAR(50) NOT NULL,
     EmailAddress VARCHAR(100) NOT NULL,
     PhoneNumber VARCHAR(10) NULL,
-    Password VARCHAR(100) NOT NULL,
+    Password VARCHAR(130) NOT NULL,
     Salt VARCHAR(10) NOT NULL,
     UserStatusId INT NOT NULL,
     UserKey VARCHAR(25) NULL,
