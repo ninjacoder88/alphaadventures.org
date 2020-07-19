@@ -13,25 +13,39 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
                         var adventures = resolvedPromises[0];
                         var rsvps = resolvedPromises[1];
 
-                        adventures.forEach(adventure => {
-                            for(var i = 0; i < rsvps.length; i++){
-                                var rsvp = rsvps[i];
+                        for(var a = 0; a < adventures.length; a++){
+                            var matched = false;
+                            var adventure = adventures[a];
+
+                            var sd = new Date(adventure.StartDateTime);
+                            var ed = new Date(adventure.EndDateTime);
+                            adventure.StartDateTime = sd.toDateString() + " " + sd.toLocaleTimeString();
+                            adventure.EndDateTime = ed.toDateString() + " " + ed.toLocaleTimeString();
+                            
+                            for(var r = 0; r < rsvps.length; r++){
+                                var rsvp = rsvps[r];
 
                                 if(adventure.AdventureId === rsvp.AdventureId){
-                                    adventure.rsvpTypeId = rsvp.RsvpTypeId;
-                                    adventure.attendees = rsvp.Attendees;
+                                    adventure.rsvpTypeId = parseInt(rsvp.RsvpTypeId);
+                                    adventure.attendees = parseInt(rsvp.Attendees);
                                     adventure.notes = rsvp.Notes;
-                                    adventure.rsvpId = rsvp.RsvpId;
-                                } else {
-                                    adventure.rsvpTypeId = 0;
-                                    adventure.attendees = 1;
-                                    adventure.notes = "";
+                                    adventure.rsvpId = parseInt(rsvp.RsvpId);
+                                    adventure.notifySms = parseInt(rsvp.NotifyBySMS) === 1 ? true : false;
+                                    adventure.notifyEmail = parseInt(rsvp.NotifyByEmail) === 1 ? true : false;
+                                    matched = true;
                                 }
                             }
-                        });
+
+                            if(matched === false){
+                                adventure.rsvpTypeId = 0;
+                                adventure.attendees = 1;
+                                adventure.notes = "";
+                                adventure.notifySms = 0;
+                                adventure.notifyEmail = 0;
+                            }
+                        }
 
                         this.adventures = adventures;
-                        console.log(rsvps);
                     }).catch(error => {
                         window.alert(error);
                     });
@@ -44,15 +58,16 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
             },
             methods: {
                 respond: function(rsvpTypeId){
-                    if(this.adventure.responseId === null || this.adventure.responseId === undefined){
-                        http.createRsvp({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes})
-                            .then(() => {
+                    if(this.adventure.rsvpId === null || this.adventure.rsvpId === undefined){
+                        http.createRsvp({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes, notifySms: this.adventure.notifySms, notifyEmail: this.adventure.notifyEmail})
+                            .then((rsvpId) => {
+                                this.adventure.rsvpId = rsvpId;
                                 this.adventure.rsvpTypeId = rsvpTypeId;
                             }).catch(error => {
                                 window.alert(error);
                             });
                     } else {
-                        http.updateResponse({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes, responseId: this.adventure.responseId})
+                        http.updateRsvp({adventureId: this.adventure.AdventureId, rsvpTypeId: rsvpTypeId, attendees: this.adventure.attendees, notes: this.adventure.notes, rsvpId: this.adventure.rsvpId, notifySms: this.adventure.notifySms, notifyEmail: this.adventure.notifyEmail})
                             .then(() => {
                                 this.adventure.rsvpTypeId = rsvpTypeId;
                             }).catch(error => {
@@ -69,7 +84,9 @@ requirejs(["jquery", "vue", "http", "text!app/views/adventure.html"],
             data: data,
             methods: methods,
             mounted: function(){
-                this.initialize();
+                this.$nextTick(() => {
+                    this.initialize();
+                })
             }
         });
     });

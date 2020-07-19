@@ -101,11 +101,10 @@ define(["jquery"],
                         method: "POST",
                         url: "/api/rsvps/_create.php",
                         dataType: "json",
-                        contentType: "application/json",
                         data: data
                     }).done(function(response){
                         if(response.success === "true"){
-                            resolve();
+                            resolve(response.rsvpId);
                         } else {
                             reject("an error occurred while creating the rsvp");
                         }
@@ -121,7 +120,6 @@ define(["jquery"],
                         method: "POST",
                         url: "/api/rsvps/_update.php",
                         dataType: "json",
-                        contentType: "application/json",
                         data: data
                     }).done(function(response){
                         if(response.success === "true"){

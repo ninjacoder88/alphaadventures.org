@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header">{{adventure.Title}}</div>
             <div class="card-body">
-                <h5 class="card-title">{{adventure.StartDateTime}}</h5>
+                <h5 class="card-title">{{adventure.StartDateTime}} - {{adventure.EndDateTime}}</h5>
                 <p class="card-text" v-html="adventure.Description"></p>
 
                 <div class="btn-group">
@@ -14,11 +14,19 @@
                         <form class="px-4 py-3">
                             <div class="form-group">
                                 <label for="">How many? <small>(including yourself)</small></label>
-                                <input type="number" class="form-control" v-model="adventure.attendees" min="0" max="9"/>
+                                <input type="number" class="form-control" value="1" v-model="adventure.attendees" min="0" max="9"/>
                             </div>
                             <div class="form-group">
                                 <label>Notes</label>
                                 <input type="text"class="form-control" v-model="adventure.notes"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" v-model="adventure.notifySms"/>
+                                <label>SMS Notifications</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" v-model="adventure.notifyEmail"/>
+                                <label>Email Notifications</label>
                             </div>
                             <button type="button" class="btn btn-primary" v-on:click="respond(1)">Submit</button>
                         </form>
@@ -32,11 +40,19 @@
                         <form class="px-4 py-3">
                             <div class="form-group">
                                 <label for="">How many? <small>(including yourself)</small></label>
-                                <input type="number" class="form-control" v-model="adventure.attendees" min="0" max="9"/>
+                                <input type="number" class="form-control"  value="1" v-model="adventure.attendees" min="0" max="9"/>
                             </div>
                             <div class="form-group">
                                 <label>Notes</label>
                                 <input type="text"class="form-control" v-model="adventure.notes"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" v-model="adventure.notifySms"/>
+                                <label>SMS Notifications</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" v-model="adventure.notifyEmail"/>
+                                <label>Email Notifications</label>
                             </div>
                             <button type="button" class="btn btn-primary" v-on:click="respond(2)">Submit</button>
                         </form>

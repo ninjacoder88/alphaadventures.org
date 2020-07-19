@@ -59,6 +59,7 @@ try
 }
 catch(Throwable $t)
 {
-    echo json_encode(array("success" => "false", "message" => $t));
+    echo json_encode(array("success" => "false"));
+    //echo json_encode(array("success" => "false", "exception"=>$t, "message"=>$t->getMessage(), "trace"=>$t->getTraceAsString()));
 }
 ?>
