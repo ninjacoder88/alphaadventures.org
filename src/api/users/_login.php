@@ -57,7 +57,7 @@ try
     $sessionManager->SetWebsiteUserId($userId);
     $sessionManager->SetUsername($username);
     $sessionManager->StayAlive();
-    if($isAdmin)
+    if($isAdmin === "1" || $isAdmin === true || $isAdmin === 1 || $isAdmin === "true")
     {
         $sessionManager->SetAdmin();
     }

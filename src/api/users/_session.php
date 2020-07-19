@@ -5,11 +5,12 @@ try
 
     $sessionManager = new SessionManager();
     $message = $sessionManager->GetMessage();
+    $isAdmin = $sessionManager->IsAdmin();
 
-    return json_encode($message);
+    echo json_encode(array("success" => "true", "session" => array("message" => $message, "isAdmin" => $isAdmin)));
 }
 catch(Throwable $t)
 {
-    echo json_encode("");
+    echo json_encode(array("success"=>"false", "ex" => $t->getMessage()));
 }
 ?>

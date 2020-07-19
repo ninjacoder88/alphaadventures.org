@@ -95,14 +95,18 @@ define(["jquery"],
                 });
             },
 
-            loadSessionMessage: function(){
+            loadSession: function(){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({
                         method: "GET",
                         url: "/api/users/_session.php",
-                        contentType: "application/json"
+                        dataType: "json"
                     }).done(function(response){
-                        resolve(response);
+                        if(response.success === "true"){
+                            resolve(response.session);
+                        } else {
+                            reject("could not load session");
+                        }
                     }).fail(function(){
                         reject();
                     })

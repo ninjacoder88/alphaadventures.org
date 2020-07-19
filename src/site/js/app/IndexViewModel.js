@@ -4,22 +4,21 @@ requirejs(["jquery", "vue", "http"],
 
         var data = {
             adventures: [],
-            message: ""
+            message: "",
         };
 
         var methods = {
             initialize: function(){
-                http.loadAdventuresPreview()
-                    .then(adventures => {
+                window.Promise.all([http.loadAdventuresPreview(), http.loadSession()])
+                    .then(resolvedPromises => {
+                        var adventures = resolvedPromises[0];
+                        var session = resolvedPromises[1];
+
                         this.adventures = adventures;
+                        this.message = session.message;
                     }).catch(error => {
-                        window.alert(error);
+                        
                     });
-                
-                http.loadSessionMessage()
-                    .then(message => {
-                        this.message = message;
-                    })
             }
         };
 

@@ -34,15 +34,19 @@ try
         $phone = $rsvp["PhoneNumber"];
         $email = $rsvp["EmailAddress"];
 
-        if($rsvp["NotifyBySMS"] === true)
+        if($notifySms=== true || $notifySms === "1")
         {
-
-        }
-        if($notifyEmail === true)
-        {
-            if($email !== null)
+            if(strlen($phone) === 10)
             {
-               // $mail->SendAdventureUpdateEmail($POST_message, $email)
+                //call twilio
+            }
+        }
+        if($notifyEmail === true || $notifyEmail === "1")
+        {
+            if(strlen($email) > 7) // a@aol.co
+            {
+                // send email
+                $mail->SendAdventureUpdateEmail($POST_message, $email);
             }
         }
     }

@@ -39,7 +39,7 @@
                             <form class="px-4 py-3">
                                 <div class="form-group">
                                     <label for="loginusername">Username</label>
-                                    <input type="email" class="form-control" id="loginusername" placeholder="email@example.com" v-model="loginusername">
+                                    <input type="text" class="form-control" id="loginusername" placeholder="theadventurer" v-model="loginusername">
                                 </div>
                                 <div class="form-group">
                                     <label for="loginpassword">Password</label>
