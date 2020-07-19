@@ -24,8 +24,12 @@ if($loggedIn)
     <script type="text/javascript" src="js/app/RegisterViewModel.js"></script>
 
     <div class="container mt-5">
-        <div class="alert alert-danger" role="alert">{{error}}</div>
-        <div class="alert alert-success" role="alert">{{message}}</div>
+        <div v-if="error !== ''">
+            <div class="alert alert-danger"role="alert">{{error}}</div>
+        </div>
+        <div v-if="message !== ''">
+            <div class="alert alert-success" role="alert">{{message}}</div>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">

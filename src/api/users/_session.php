@@ -10,6 +10,6 @@ try
 }
 catch(Throwable $t)
 {
-    echo json_encode(array("message" => $t->getMessage()));
+    echo json_encode("");
 }
 ?>

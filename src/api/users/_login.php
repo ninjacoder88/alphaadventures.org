@@ -15,7 +15,7 @@ try
 
     if($user == null)
     {
-        echo json_encode(array("success" => "false", "message" => "invalid username or password - 1"));
+        echo json_encode(array("success" => "false", "message" => "invalid username or password"));
         exit();
     }
 
@@ -42,7 +42,7 @@ try
 
     if($databasePassword != $hashedSaltedPassword)
     {
-        echo json_encode(array("success" => "false", "message" => "invalid username or password - 2", "dbpw" => $databasePassword, "cpw" => $hashedSaltedPassword));
+        echo json_encode(array("success" => "false", "message" => "invalid username or password"));
         exit();
     }
 

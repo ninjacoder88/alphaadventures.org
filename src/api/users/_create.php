@@ -20,7 +20,7 @@ try
 
     if($POST_username == "")
     {
-        echo json_encode(array("success" => "false", "message" => "username must have a value", "un" => $POST_username));
+        echo json_encode(array("success" => "false", "message" => "username must have a value"));
         exit();
     }
 

@@ -7,7 +7,7 @@ try
     $userKey = "ABC123";
     $POST_emailAddress = "thomasharris88@gmail.com";
 
-    $mail->SendRegistrionEmail($userKey, $POST_emailAddress);
+    //$mail->SendRegistrionEmail($userKey, $POST_emailAddress);
     echo "success";
 }
 catch(Throwable $t)

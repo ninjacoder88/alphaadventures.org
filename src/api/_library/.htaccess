@@ -1,0 +1,6 @@
+RewriteEngine On
+
+<Files "connection.config">
+    Order Allow,Deny
+    Deny from all
+</Files>

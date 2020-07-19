@@ -45,7 +45,9 @@
                                     <label for="loginpassword">Password</label>
                                     <input type="password" class="form-control" id="loginpassword" placeholder="Password" v-model="loginpassword">
                                 </div>
-                                <div class="alert alert-danger" role="alert">{{loginerror}}</div>
+                                <div v-if="loginerror !== ''">
+                                    <div class="alert alert-danger" role="alert">{{loginerror}}</div>
+                                </div>
                                 <button type="button" class="btn btn-primary" v-on:click="login">Login</button>
                                 <br/>
                                 <a type="button" class="btn btn-outline-info btn-sm" href="forgot.php">Forgot User/Password</a>

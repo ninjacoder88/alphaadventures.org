@@ -17,10 +17,6 @@ try
     $repository = new RsvpRepository();
     $rsvps = $repository->LoadForUserId($userId);
 
-    // $array = array(
-    //     0 => array("AdventureId" => 1, "RsvpId" => 1, "RsvpTypeId" => 1, "Notes" => "", "Attendees" => 2, "Notes" => "Need special food")
-    // );
-    
     echo json_encode(array("success" => "true", "rsvps" => $rsvps));
 }
 catch(Throwable $t)
