@@ -3,7 +3,8 @@ requirejs(["jquery", "vue", "http"],
         "use strict";
 
         var data = {
-            adventures: []
+            adventures: [],
+            message: ""
         };
 
         var methods = {
@@ -14,6 +15,11 @@ requirejs(["jquery", "vue", "http"],
                     }).catch(error => {
                         window.alert(error);
                     });
+                
+                http.loadSessionMessage()
+                    .then(message => {
+                        this.message = message;
+                    })
             }
         };
 

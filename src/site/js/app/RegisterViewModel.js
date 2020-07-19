@@ -13,7 +13,18 @@ requirejs(["jquery", "vue", "http"],
 
         var methods = {
             register: function(){
-                var data = {username: this.username, emailAddress: this.emailAddress, phoneNumber: this.phoneNumber, password: this.password};
+                var matchArray = this.phoneNumber.match(/\d+/g);
+                var phoneNumber = "";
+                for(var i = 0; i < matchArray.length; i++){
+                    phoneNumber += matchArray[i];
+                }
+
+                if(phoneNumber.length !== 10){
+                    this.error = "invalid phone number";
+                    return;
+                }
+
+                var data = {username: this.username, emailAddress: this.emailAddress, phoneNumber: phoneNumber, password: this.password};
 
                 http.createUser(data)
                     .then((response) => {

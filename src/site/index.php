@@ -27,6 +27,8 @@ if($loggedIn)
     </div><!--/jumbotron-->
 
     <div class="container">
+        <div class="alert" role="alert">{{message}}</div>
+
         <h3>Upcoming Adventures</h4>
         
         <ul class="list-group">

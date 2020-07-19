@@ -3,6 +3,7 @@ try
 {
     require_once("UserRepository.php");    
     require_once("../_library/EncryptionManager.php");
+    require_once("../_library/MailManager.php");
 
     $POST_username = $_POST["username"];
     $POST_emailAddress = $_POST["emailAddress"];
@@ -11,6 +12,7 @@ try
 
     $repository = new UserRepository();
     $encryption = new EncryptionManager();
+    $mail = new MailManager();
 
     $salt = $encryption->GenerateSalt();
     $saltedPassword = $POST_password . $salt;
@@ -48,13 +50,16 @@ try
         exit();
     }
 
-    $userId = $repository->CreateUser($POST_username, $POST_emailAddress, $POST_phoneNumber, $hashedSaltedPassword, $salt);
+    $userKey = $encryption->GenerateUserKey();
+
+    $userId = $repository->CreateUser($POST_username, $POST_emailAddress, $POST_phoneNumber, $hashedSaltedPassword, $salt, $userKey);
     if($userId == null)
     {
         echo json_encode(array("success" => "false"));
         exit();
     }
 
+    $mail->SendRegistrionEmail($userKey, $POST_emailAddress);
     echo json_encode(array("success" => "true", "message" => $userId));
 }
 catch(Throwable $t)

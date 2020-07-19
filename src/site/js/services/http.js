@@ -3,6 +3,25 @@ define(["jquery"],
         "use strict";
 
         return {
+            createRsvp: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/rsvps/_create.php",
+                        dataType: "json",
+                        data: data
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve(response.rsvpId);
+                        } else {
+                            reject("an error occurred while creating the rsvp");
+                        }
+                    }).fail(function(){
+                        reject("failed to create rsvp");
+                    })
+                });
+            },
+
             createUser: function(data){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({
@@ -20,25 +39,6 @@ define(["jquery"],
                         reject("failed to create a user");
                     });
                 })
-            },
-
-            login: function(data){
-                return new window.Promise((resolve, reject) => {
-                    $.ajax({
-                        method: "POST",
-                        url: "/api/users/_login.php",
-                        data: data,
-                        dataType: "json"
-                    }).done(function(response){
-                        if(response.success === "true"){
-                            resolve();
-                        } else {
-                            reject(response.message);
-                        }
-                    }).fail(function(){
-                        reject("login failed");
-                    });
-                });
             },
 
             loadAdventures: function(){
@@ -95,22 +95,36 @@ define(["jquery"],
                 });
             },
 
-            createRsvp: function(data){
+            loadSessionMessage: function(){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "GET",
+                        url: "/api/users/_session.php",
+                        contentType: "application/json"
+                    }).done(function(response){
+                        resolve(response);
+                    }).fail(function(){
+                        reject();
+                    })
+                });
+            },
+
+            login: function(data){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({
                         method: "POST",
-                        url: "/api/rsvps/_create.php",
-                        dataType: "json",
-                        data: data
+                        url: "/api/users/_login.php",
+                        data: data,
+                        dataType: "json"
                     }).done(function(response){
                         if(response.success === "true"){
-                            resolve(response.rsvpId);
+                            resolve();
                         } else {
-                            reject("an error occurred while creating the rsvp");
+                            reject(response.message);
                         }
                     }).fail(function(){
-                        reject("failed to create rsvp");
-                    })
+                        reject("login failed");
+                    });
                 });
             },
 

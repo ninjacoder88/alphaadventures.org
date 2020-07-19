@@ -13,6 +13,11 @@ class EncryptionManager
 		return $this->GenerateRandomCharacters(5, true, true, true, false);
 	}
 
+	public function GenerateUserKey()
+	{
+		return $this->GenerateRandomCharacters(15, true, true, true, false);
+	}
+
 	public function HashEncrypt($data)
 	{
 		return bin2hex(mhash(MHASH_SHA512, $data));
