@@ -1,17 +1,17 @@
 <?php
 try
 {
-    require_once("../library/EncryptionManager.php");
-    require_once("../library/SessionManager.php");
+    require_once("../_library/EncryptionManager.php");
+    require_once("../_library/SessionManager.php");
     require_once("UserRepository.php");
     
     $POST_username = $_POST["username"];
     $POST_password = $_POST["password"];
 
-    $encryptionManager = new EncryptionManager();
+    $encryption = new EncryptionManager();
     $userRepository = new UserRepository();
 
-    $user = $userRepository->LoadUserByEmailAddress($POST_username);
+    $user = $userRepository->LoadUserByUsername($POST_username);
 
     if($user == null)
     {
@@ -37,12 +37,12 @@ try
         exit();
     }
 
-    $saltedPassword = $POST_password + $salt;
+    $saltedPassword = $POST_password . $salt;
     $hashedSaltedPassword = $encryption->HashEncrypt($saltedPassword);
 
     if($databasePassword != $hashedSaltedPassword)
     {
-        echo json_encode(array("success" => "false", "message" => "invalid username or password - 2"));
+        echo json_encode(array("success" => "false", "message" => "invalid username or password - 2", "dbpw" => $databasePassword, "cpw" => $hashedSaltedPassword));
         exit();
     }
 

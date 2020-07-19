@@ -1,14 +1,23 @@
-requirejs(["jquery", "vue", "bootstrap"],
-    function($, vue){
+requirejs(["jquery", "vue", "http", "bootstrap"],
+    function($, vue, http){
         "use strict";
 
         var data = {
-
+            loginusername: "",
+            loginpassword: "",
+            loginerror: ""
         };
 
         var methods = {
             login: function(){
-                window.location = "home.php";
+                var data = {username: this.loginusername, password: this.loginpassword};
+
+                http.login(data)
+                    .then(response => {
+                        window.location = "home.php";
+                    }).catch(error => {
+                        this.loginerror = error;
+                    })
             }
         };
 

@@ -6,7 +6,9 @@ requirejs(["jquery", "vue", "http"],
             username: "",
             emailAddress: "",
             phoneNumber: "",
-            password: ""
+            password: "",
+            error: "",
+            message: ""
         };
 
         var methods = {
@@ -14,10 +16,17 @@ requirejs(["jquery", "vue", "http"],
                 var data = {username: this.username, emailAddress: this.emailAddress, phoneNumber: this.phoneNumber, password: this.password};
 
                 http.createUser(data)
-                    .then(() => {
-
+                    .then((response) => {
+                        this.message = "account succesfully created. check your email to complete registration";
+                        this.username = "";
+                        this.emailAddress = "";
+                        this.phoneNumber = "";
+                        this.password = "";
+                        setTimeout(() => {
+                            window.location = "index.php";
+                        }, 10000);
                     }).catch(error => {
-                        window.alert(error);
+                        this.error = error;
                     })
             }
         };

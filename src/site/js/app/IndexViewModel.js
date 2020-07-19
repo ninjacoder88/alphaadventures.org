@@ -8,7 +8,7 @@ requirejs(["jquery", "vue", "http"],
 
         var methods = {
             initialize: function(){
-                http.loadAdventures()
+                http.loadAdventuresPreview()
                     .then(adventures => {
                         this.adventures = adventures;
                     }).catch(error => {

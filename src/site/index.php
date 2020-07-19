@@ -17,11 +17,6 @@ if($loggedIn)
     $sessionManager->StayAlive();
     header("location:home.php");
 }
-else
-{
-    header("location:index.php");
-    exit();
-}
 ?>
 
 <?php function RenderBody() { ?>

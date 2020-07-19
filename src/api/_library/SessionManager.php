@@ -77,7 +77,7 @@ class SessionManager
 		$now = time();
 		$lastActionTime = $_SESSION[$this->SessionVariableNameLastActionTime];
 		
-		if($now - $lastActionTime > 60 * 30)
+		if($now - $lastActionTime > 60 * 60)
 		{
 			return true;
 		}

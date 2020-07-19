@@ -7,20 +7,38 @@ define(["jquery"],
                 return new window.Promise((resolve, reject) => {
                     $.ajax({
                         method: "POST",
-                        url: "/api/register/_register.php",
+                        url: "/api/users/_create.php",
                         data: data,
-                        dataType: "json",
-                        contentType: "application/json"
+                        dataType: "json"
                     }).done(function(response){
                         if(response.success === "true"){
                             resolve();
                         } else {
-                            reject("an error occurred while creating a user")
+                            reject(response.message);
                         }
-                    }).fail(function(){
+                    }).fail(function(jqXHR, error, textStatus){
                         reject("failed to create a user");
                     });
                 })
+            },
+
+            login: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/users/_login.php",
+                        data: data,
+                        dataType: "json"
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve();
+                        } else {
+                            reject(response.message);
+                        }
+                    }).fail(function(){
+                        reject("login failed");
+                    });
+                });
             },
 
             loadAdventures: function(){
@@ -28,6 +46,24 @@ define(["jquery"],
                     $.ajax({
                         method: "GET",
                         url: "/api/adventures/_upcoming.php",
+                        dataType: "json"
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve(response.adventures);
+                        } else {
+                            reject("an error occured while loading adventures");
+                        }
+                    }).fail(function(){
+                        reject("failed to load adventures");
+                    });
+                });
+            },
+
+            loadAdventuresPreview: function(){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "GET",
+                        url: "/api/adventures/_preview.php",
                         dataType: "json"
                     }).done(function(response){
                         if(response.success === "true"){

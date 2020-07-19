@@ -23,10 +23,10 @@
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"><?php echo "Username"; ?></a>
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"><?php echo $sessionManager->GetUsername(); ?></a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="profile.php">Settings</a>
+                            <a class="dropdown-item" href="/api/users/_logout.php">Logout</a>
                         </div>
                     </li>
                     <?php } else  { ?>
@@ -38,13 +38,14 @@
                         <div class="dropdown-menu" style="width: 250px">
                             <form class="px-4 py-3">
                                 <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Name</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                    <label for="loginusername">Username</label>
+                                    <input type="email" class="form-control" id="loginusername" placeholder="email@example.com" v-model="loginusername">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                    <label for="loginpassword">Password</label>
+                                    <input type="password" class="form-control" id="loginpassword" placeholder="Password" v-model="loginpassword">
                                 </div>
+                                <div class="alert alert-danger" role="alert">{{loginerror}}</div>
                                 <button type="button" class="btn btn-primary" v-on:click="login">Login</button>
                                 <br/>
                                 <a type="button" class="btn btn-outline-info btn-sm" href="forgot.php">Forgot User/Password</a>

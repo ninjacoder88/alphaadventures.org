@@ -17,11 +17,6 @@ if($loggedIn)
     $sessionManager->StayAlive();
     header("location:home.php");
 }
-else
-{
-    header("location:index.php");
-    exit();
-}
 ?>
 
 <!doctype html>
@@ -29,6 +24,8 @@ else
     <script type="text/javascript" src="js/app/RegisterViewModel.js"></script>
 
     <div class="container mt-5">
+        <div class="alert alert-danger" role="alert">{{error}}</div>
+        <div class="alert alert-success" role="alert">{{message}}</div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
