@@ -4,10 +4,11 @@
 - [x] Generate User Key on registration
 - [ ] Setup forgot user/pass page
 - [ ] Send email to reset user/pass
-- [ ] Hide alerts on registration when not in use
-- [ ] Hide alert on login when not in use
+- [x] Hide alerts on registration when not in use
+- [x] Hide alert on login when not in use
 - [ ] Integrate with Twilio
-- [ ] Add admin page
-- [ ] Add update events functionality to admin page
+- [x] Add admin page
+- [x] Add update events functionality to admin page
 - [ ] Add event notification to admin page
 - [ ] Show other users rsvps
+- [ ] Setup table for contact form
