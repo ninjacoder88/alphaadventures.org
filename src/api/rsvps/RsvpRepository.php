@@ -23,5 +23,12 @@ class RsvpRepository extends AlphaAdventuresRepository
         $bindings = array(":userId"=>$userId);
         return parent::FetchAll($sql, $bindings);
     }
+
+    public function LoadAllForAdventure($adventureId)
+    {
+        $sql = "SELECT r.NotifyBySMS, r.NotifyByEmail, u.EmailAddress, u.PhoneNumber FROM Rsvp AS r JOIN User AS u ON r.UserId = u.UserId WHERE AdventureId = :adventureId";
+        $bindings = array(":adventureId"=>$adventureId);
+        return parent::FetchAll($sql, $bindings);
+    }
 }
 ?>

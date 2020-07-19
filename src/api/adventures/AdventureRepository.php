@@ -9,5 +9,12 @@ class AdventureRepository extends AlphaAdventuresRepository
         $bindings = array();
         return parent::FetchAll($sql, $bindings);
     }
+
+    public function UpdateAdventure($adventureId, $title, $start, $end, $description)
+    {
+        $sql = "UPDATE Adventure SET Title = :title, StartDateTime = :start, EndDateTime = :end, Description = :description WHERE AdventureId = :adventureId";
+        $bindings = array(":adventureId"=>$adventureId, ":title"=>$title, ":start"=>$start, ":end"=>$end, ":description"=>$description);
+        return parent::Update($sql, $bindings);
+    }
 }
 ?>

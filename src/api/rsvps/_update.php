@@ -31,6 +31,12 @@ try
     {
         $emailNotify = true;
     }
+
+    if($POST_rsvpTypeId === 3)//not attending
+    {
+        $smsNotify = false;
+        $emailNotify = false;
+    }
         
     $repository = new RsvpRepository();
     $repository->UpdateRsvp($POST_rsvpId, $POST_rsvpTypeId, $POST_attendees, $POST_notes, $smsNotify, $emailNotify);

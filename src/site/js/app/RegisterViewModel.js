@@ -13,6 +13,9 @@ requirejs(["jquery", "vue", "http"],
 
         var methods = {
             register: function(){
+                this.error = "";
+                this.message = "";
+                
                 var matchArray = this.phoneNumber.match(/\d+/g);
                 var phoneNumber = "";
                 for(var i = 0; i < matchArray.length; i++){

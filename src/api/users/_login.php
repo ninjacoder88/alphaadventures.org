@@ -24,6 +24,7 @@ try
     $databasePassword = $user["Password"];
     $userId = $user["UserId"];
     $username = $user["Username"];
+    $isAdmin = $user["IsAdmin"];
 
     if($userStatusId == 1)
     {
@@ -56,6 +57,10 @@ try
     $sessionManager->SetWebsiteUserId($userId);
     $sessionManager->SetUsername($username);
     $sessionManager->StayAlive();
+    if($isAdmin)
+    {
+        $sessionManager->SetAdmin();
+    }
     echo json_encode(array("success" => "true"));
 }
 catch(Throwable $t)

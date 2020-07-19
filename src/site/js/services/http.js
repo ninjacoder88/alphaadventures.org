@@ -128,6 +128,44 @@ define(["jquery"],
                 });
             },
 
+            notifyAdventure: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/rsvps/_notify.php",
+                        dataType: "json",
+                        data: data
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve();
+                        } else {
+                            reject("an error occurred sending notifications");
+                        }
+                    }).fail(function(){
+                        reject("failed to notify");
+                    })
+                });
+            },
+
+            updateAdventure: function(data){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/adventures/_update.php",
+                        dataType: "json",
+                        data: data
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve();
+                        } else {
+                            reject("an error occurred while updating the adventure");
+                        }
+                    }).fail(function(){
+                        reject("failed to update adventure");
+                    })
+                });
+            },
+
             updateRsvp: function(data){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({
