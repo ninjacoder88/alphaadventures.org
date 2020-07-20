@@ -19,7 +19,7 @@ class UserRepository extends AlphaAdventuresRepository
 
     public function CreateUser($username, $emailAddress, $phoneNumber, $password, $salt, $userKey)
     {
-        $sql = "INSERT INTO User (Username, EmailAddress, PhoneNumber, Password, Salt, UserStatusId, UserKey, IsAdmin) VALUES (:username, :emailAddress, :phoneNumber, :password, :salt, 1, :userKey, false)";
+        $sql = "INSERT INTO User (Username, EmailAddress, PhoneNumber, Password, Salt, UserStatusId, UserKey, IsAdmin) VALUES (:username, :emailAddress, :phoneNumber, :password, :salt, 1, :userKey, 0)";
         $bindings = array(":username"=>$username, ":emailAddress"=>$emailAddress, ":phoneNumber"=>$phoneNumber, ":password"=>$password, ":salt"=>$salt, ":userKey"=>$userKey);
         return parent::Insert($sql, $bindings);
     }
@@ -43,6 +43,13 @@ class UserRepository extends AlphaAdventuresRepository
         $sql = "UPDATE User SET UserKey = NULL WHERE UserId = :userId";
         $bindings = array(":userId"=>$userId);
         return parent::Update($sql, $bindings);
+    }
+
+    public function LoadAll()
+    {
+        $sql = "SELECT * FROM User";
+        $bindings = array();
+        return parent::FetchAll($sql, $bindings);
     }
 }
 ?>

@@ -1,27 +1,24 @@
-requirejs(["vue", "http", "text!app/views/editadventure.html"],
-    function(vue, http, editTemplate){
+requirejs(["vue", "http", "text!app/views/edit-user.html", "text!app/views/edit-adventure.html", ],
+    function(vue, http, userTemplate, adventureTemplate){
         "use strict";
 
-        var data = {
-            adventures: [],
-            adventure: {AdventureId:0},
-            message: ""
-        };
-
-        var methods = {
-            loadAdventures: function(){
-                http.loadAdventures()
-                    .then(adventures => {
-                        this.adventures = adventures;
-                        this.adventure = adventures[0];
-                    }).catch(error => {
-                        this.message = error;
-                    });
+        vue.component("edit-user", {
+            props: ["user"],
+            data: function(){
+                return {
+                    message: ""
+                };
             },
-            select: function(index){
-                this.adventure = this.adventures[index];
-            }
-        };
+            methods: {
+                saveUser: function(){
+                    alert("save");
+                },
+                deleteUser: function(){
+                    alert("delete");
+                }
+            },
+            template: userTemplate
+        });
 
         vue.component("edit-adventure", {
             props: ["adventure"],
@@ -49,12 +46,38 @@ requirejs(["vue", "http", "text!app/views/editadventure.html"],
                         });
                 }
             },
-            template: editTemplate
-        })
+            template: adventureTemplate
+        });
 
         var app = new vue({
             el: "#app",
-            data: data,
-            methods: methods
+            data: {
+                adventures: [],
+                adventure: {AdventureId:0},
+                message: "",
+                users: []
+            },
+            methods: {
+                loadAdventures: function(){
+                    http.loadAdventures()
+                        .then(adventures => {
+                            this.adventures = adventures;
+                            this.adventure = adventures[0];
+                        }).catch(error => {
+                            this.message = error;
+                        });
+                },
+                loadUsers: function(){
+                    http.loadUsers()
+                        .then(users => {
+                            this.users = users;
+                        }).catch(error => {
+                            this.message = error;
+                        });
+                },
+                select: function(index){
+                    this.adventure = this.adventures[index];
+                }
+            }
         });
     });

@@ -27,7 +27,7 @@ if($loggedIn)
     </div> -->
     <!--/jumbotron-->
 
-    <img src="https://ninjasoftwareconsulting.blob.core.windows.net/alpha/hike.jpg" width="100%" />
+    <img src="https://alphaadventures.org/cdn/hike.jpg" width="100%" />
 
     <br/>
     <br/>

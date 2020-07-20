@@ -22,29 +22,30 @@ try
         exit();
     }
 
+    $username = $user["Username"];
+    $emailAddress = $user["EmailAddress"];
+
     if($POST_retrieval === "user")
     {
-        //send email with username
+        $mail->SendUsernameEmail($username, $emailAddress);
+        echo json_encode(array("success" => "true"));
+        exit();
     }
 
     if($POST_retrieval === "pass")
     {
         //send email with reset link
         //set user status
-        //set user key
+        //set user keys
+        echo json_encode(array("success" => "true"));
+        exit();
     }
 
-    $userId = $user["UserId"];
-
-    $userRepository->UpdateUserStatus($userId, 2);//active
-    $userRepository->ClearUserKey($userId);
-    $sessionManager->SetMessage("your account has been successfully activated");
-    header("location:../../site/index.php");
+    echo json_encode(array("success" => "false"));
 }
 catch(Throwable $t)
 {
-    $sessionManager = new SessionManager();
-    $sessionManager->SetMessage("account activiation failed");
-    header("location:../../site/index.php");
+    echo json_encode(array("success" => "false"));
+    //echo json_encode(array("success" => "false", "exception"=>$t, "message"=>$t->getMessage(), "trace"=>$t->getTraceAsString()));
 }
 ?>

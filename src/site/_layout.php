@@ -26,7 +26,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown"><?php echo $sessionManager->GetUsername(); ?></a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="profile.php">Settings</a>
+                            <a class="dropdown-item" href="#">Settings</a>
                             <a class="dropdown-item" href="/api/users/_logout.php">Logout</a>
                         </div>
                     </li>

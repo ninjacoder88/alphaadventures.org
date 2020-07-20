@@ -57,11 +57,11 @@ try
     $sessionManager->SetWebsiteUserId($userId);
     $sessionManager->SetUsername($username);
     $sessionManager->StayAlive();
-    if($isAdmin === "1" || $isAdmin === true || $isAdmin === 1 || $isAdmin === "true")
+    if($isAdmin === "1" || $isAdmin === 1)
     {
         $sessionManager->SetAdmin();
     }
-    echo json_encode(array("success" => "true"));
+    echo json_encode(array("success" => "true", "isAdmin" => $user["IsAdmin"]));
 }
 catch(Throwable $t)
 {

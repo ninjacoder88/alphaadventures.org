@@ -9,7 +9,7 @@ requirejs(["vue", "http", "text!app/views/adventure.html"],
 
         var methods = {
             initialize: function(){
-                window.Promise.all([http.loadAdventures(), http.loadRsvps()])
+                window.Promise.all([http.loadAdventures(), http.loadRsvps(), http.loadSession()])
                     .then(resolvedPromises => {
                         var adventures = resolvedPromises[0];
                         var rsvps = resolvedPromises[1];
@@ -56,7 +56,9 @@ requirejs(["vue", "http", "text!app/views/adventure.html"],
         vue.component("adventure", {
             props: ["adventure"],
             data: function(){
-                message: ""
+                return {
+                    message: ""
+                }
             },
             methods: {
                 respond: function(rsvpTypeId){

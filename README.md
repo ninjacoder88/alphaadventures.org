@@ -1,14 +1,11 @@
 # To Do
-- [x] Send email on register
-- [x] Create response script for email links
-- [x] Generate User Key on registration
-- [ ] Setup forgot user/pass page
-- [ ] Send email to reset user/pass
-- [x] Hide alerts on registration when not in use
-- [x] Hide alert on login when not in use
-- [ ] Integrate with Twilio
-- [x] Add admin page
-- [x] Add update events functionality to admin page
-- [ ] Add event notification to admin page
-- [ ] Show other users rsvps
-- [x] Setup table for contact form
+- [ ] Password reset email
+- [ ] Password reset page
+- [ ] Password reset logic
+- [ ] SMS notifications integration with Twilio
+- [ ] Email notifications for events
+- [ ] Text notifications for events
+- [ ] Show other RSVPs
+- [ ] Error logging on api
+- [ ] User management in admin
+- [ ] Profile page for user to update information

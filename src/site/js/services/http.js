@@ -113,6 +113,24 @@ define(["jquery"],
                 });
             },
 
+            loadUsers: function(){
+                return new window.Promise((resolve, reject) => {
+                    $.ajax({
+                        method: "GET",
+                        url: "/api/users/_load.php",
+                        dataType: "json"
+                    }).done(function(response){
+                        if(response.success === "true"){
+                            resolve(response.users);
+                        } else {
+                            reject("an error occured while loading users");
+                        }
+                    }).fail(function(){
+                        reject("failed to load users");
+                    });
+                });
+            },
+
             login: function(data){
                 return new window.Promise((resolve, reject) => {
                     $.ajax({

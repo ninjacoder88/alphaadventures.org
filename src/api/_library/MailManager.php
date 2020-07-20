@@ -1,7 +1,7 @@
 <?php
 class MailManager
 {
-    public function SendRegistrionEmail($userKey, $userEmailAddress)
+    public function SendRegistrationEmail($userKey, $userEmailAddress)
     {
         $message = "<html>";
         $message .= "<head>";
@@ -15,7 +15,7 @@ class MailManager
         $message .= "</body>";
         $message .= "</html>";
 
-        $this->SendMail("Alpha Adventures", "registration@alphaadventures.org", $userEmailAddress, "Complete Your Registration", $message);
+        $this->SendMail("Alpha Adventures", "accounts@alphaadventures.org", $userEmailAddress, "Complete Your Registration", $message);
     }
 
     public function SendAdventureUpdateEmail($updateText, $userEmailAddress)
@@ -32,7 +32,41 @@ class MailManager
         $message .= "</body>";
         $message .= "</html>";
 
-        $this->SendMail("Alpha Adventures", "notification@alphaadventures.org", $userEmailAddress, "Complete Your Registration", $message);
+        $this->SendMail("Alpha Adventures", "notifications@alphaadventures.org", $userEmailAddress, "Alpha Adventures Notification", $message);
+    }
+
+    public function SendUsernameEmail($username, $userEmailAddress)
+    {
+        $message = "<html>";
+        $message .= "<head>";
+        $message .= "<title>Alpha Adventures Activtation</title>";
+        $message .= "</head>";
+        $message .= "<body>";
+        $message .= "<h2>Account Username</h2>";
+        $message .= "<p>A request was made for the username associated with this email address</p>";
+        $message .= "<p>The username is ".$username."</p>";
+        $message .= "<p>If you believe your received this email in error, please reply to this email stating so.</p>";
+        $message .= "</body>";
+        $message .= "</html>";
+
+        $this->SendMail("Alpha Adventures", "accounts@alphaadventures.org", $userEmailAddress, "Complete Your Activation", $message);
+    }
+
+    public function SendActivationEmail($userKey, $userEmailAddress)
+    {
+        $message = "<html>";
+        $message .= "<head>";
+        $message .= "<title>Alpha Adventures Activation</title>";
+        $message .= "</head>";
+        $message .= "<body>";
+        $message .= "<h2>Account Activation</h2>";
+        $message .= "<p>A password reset request was made for the account associated with this email. Follow the link below to complete the process.</p>";
+        $message .= "<p>https://alphaadventures.org/api/users/_verify.php?code=".$userKey."</p>";
+        $message .= "<p>If you believe your received this email in error, please reply to this email stating so.</p>";
+        $message .= "</body>";
+        $message .= "</html>";
+
+        $this->SendMail("Alpha Adventures", "accounts@alphaadventures.org", $userEmailAddress, "Alpha Adventure Account", $message);
     }
 
     private function SendMail($fromAccountName, $fromAddress, $toAddress, $subject, $message)

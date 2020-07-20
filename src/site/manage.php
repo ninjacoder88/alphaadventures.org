@@ -51,6 +51,14 @@ else
     </div>
     
     <hr/>
+
+    <h3>Users</h3>
+
+    <button type="button" v-on:click="loadUsers" class="btn btn-primary btn-sm">Load</button>
+    <br/>
+    <br/>
+    <edit-user v-for="user in users" v-bind:key="user.userId" v-bind:user="user"></edit-user>
+
 <?php } ?>
 
 <!doctype html>
