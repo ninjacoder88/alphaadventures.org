@@ -33,6 +33,7 @@ try
         $notifyEmail = $rsvp["NotifyByEmail"];
         $phone = $rsvp["PhoneNumber"];
         $email = $rsvp["EmailAddress"];
+        $title = $rsvp["Title"];
 
         if($notifySms=== true || $notifySms === "1")
         {
@@ -46,7 +47,7 @@ try
             if(strlen($email) > 7) // a@aol.co
             {
                 // send email
-                $mail->SendAdventureUpdateEmail($POST_message, $email);
+                $mail->SendAdventureUpdateEmail($POST_message, $title, $email);
             }
         }
     }

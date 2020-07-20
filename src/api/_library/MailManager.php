@@ -18,7 +18,7 @@ class MailManager
         $this->SendMail("Alpha Adventures", "accounts@alphaadventures.org", $userEmailAddress, "Complete Your Registration", $message);
     }
 
-    public function SendAdventureUpdateEmail($updateText, $userEmailAddress)
+    public function SendAdventureUpdateEmail($updateText, $title, $userEmailAddress)
     {
         $message = "<html>";
         $message .= "<head>";
@@ -27,6 +27,7 @@ class MailManager
         $message .= "<body>";
         $message .= "<h2>Adventure Notification</h2>";
         $message .= "<p>An adventure that you have subscribed to has a notification</p>";
+        $message .= "<p><strong>". $title ."</strong></p>";
         $message .= "<p>". $updateText ."</p>";
         $message .= "<p>If you would like to stop receiving notifications for this adventure, login to your account and uncheck notifications in the RSVP form for this adventure. If you believe your received this email in error, please reply to this email stating so.</p>";
         $message .= "</body>";

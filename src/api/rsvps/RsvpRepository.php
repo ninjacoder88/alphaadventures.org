@@ -26,7 +26,7 @@ class RsvpRepository extends AlphaAdventuresRepository
 
     public function LoadAllForAdventure($adventureId)
     {
-        $sql = "SELECT r.NotifyBySMS, r.NotifyByEmail, u.EmailAddress, u.PhoneNumber FROM Rsvp AS r JOIN User AS u ON r.UserId = u.UserId WHERE AdventureId = :adventureId";
+        $sql = "SELECT r.NotifyBySMS, r.NotifyByEmail, u.EmailAddress, u.PhoneNumber, a.Title FROM Rsvp AS r JOIN User AS u ON r.UserId = u.UserId JOIN Adventure AS a ON r.AdventureId = a.AdventureId WHERE r.AdventureId = :adventureId";
         $bindings = array(":adventureId"=>$adventureId);
         return parent::FetchAll($sql, $bindings);
     }
