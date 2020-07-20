@@ -32,8 +32,9 @@ requirejs(["vue", "http", "text!app/views/edit-user.html", "text!app/views/edit-
                     var data = {message: this.message, adventureId: this.adventure.AdventureId};
 
                     http.notifyAdventure(data)
-                        .then(() => {
-
+                        .then((errors) => {
+                            this.message = "";
+                            console.error(errors);
                         }).catch(error => {
                             alert(error);
                         })

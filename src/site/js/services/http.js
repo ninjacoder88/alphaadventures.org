@@ -197,7 +197,7 @@ define(["jquery"],
                         data: data
                     }).done(function(response){
                         if(response.success === "true"){
-                            resolve();
+                            resolve(response.errors);
                         } else {
                             reject("an error occurred sending notifications");
                         }
