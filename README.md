@@ -2,9 +2,9 @@
 - [ ] Password reset email
 - [ ] Password reset page
 - [ ] Password reset logic
-- [ ] SMS notifications integration with Twilio
-- [ ] Email notifications for events
-- [ ] Text notifications for events
+- [x] SMS notifications integration with Twilio
+- [x] Email notifications for events
+- [x] Text notifications for events
 - [ ] Show other RSVPs
 - [ ] Error logging on api
 - [ ] User management in admin

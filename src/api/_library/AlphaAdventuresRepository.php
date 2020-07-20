@@ -161,7 +161,7 @@ class AlphaAdventuresRepository
 		curl_setopt($ch,CURLOPT_POSTFIELDS,$json);
 		$result = curl_exec($ch);
 		curl_close($ch);
-		throw $exception;
+		//throw $exception;
 	}
 
 	private $serverHost;
